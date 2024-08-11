@@ -49,11 +49,11 @@ document.getElementById('convert-btn').addEventListener('click', async function 
         });
 
         const convertResult = await convertResponse.json();
+        // Display the generated Sigma rule
+        queryCodeArea.value = convertResult.sigmaRule;
+        autoResize(queryCodeArea);
 
         if (convertResponse.ok) {
-            // Display the generated Sigma rule
-            queryCodeArea.value = convertResult.sigmaRule;
-            autoResize(queryCodeArea);
             validationStatus.textContent = "Sigma rule generated. Validating syntax now...";
             validationStatus.style.color = "green";
             validationStatus.classList.remove('fail');
